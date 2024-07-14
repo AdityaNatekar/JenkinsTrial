@@ -5,33 +5,18 @@ pipeline {
         stage('Initialize') {
             steps {
                 script {
-                    // Load Fuji and Kiku classes
-                    def Fuji = load "${pwd()}/fuji.groovy"
-                    def Kiku = load "${pwd()}/kiku.groovy"
+                    // Load Groovy classes
+                    def Fuji = load "fuji.groovy"
+                    def Kiku = load "kiku.groovy"
                     
-                    // Instantiate Fuji and Kiku objects
-     
+                    // Instantiate objects
+                    def fujiInstance = new Fuji()
+                    def kikuInstance = new Kiku()
                     
-   
-                }
-            }
-        }
-
-        stage('Execute Fuji') {
-            steps {
-                script {
-                    // Access methods from Fuji instance
-                   Fuji.say()
-                   Fuji.sing("Lemon")
-                }
-            }
-        }
-
-        stage('Execute Kiku') {
-            steps {
-                script {
-                    // Access methods from Kiku instance
-                    Kiku.say()
+                    // Use methods from Fuji and Kiku instances
+                    fujiInstance.say()
+                    fujiInstance.sing("Lemon")
+                    kikuInstance.say()
                 }
             }
         }
