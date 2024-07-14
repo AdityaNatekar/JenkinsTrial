@@ -1,15 +1,14 @@
-// CommonUtils.groovy
+// fuji.groovy
 
-class CommonUtils {
+class Fuji {
     
-    static void notify(String message) {
-        // Example: Notify based on the message
-        echo "Notification: ${message}"
+    void say() {
+        echo "I'm fuji aoi!"
+    }
+
+    void sing(String title) {
+        echo "Sing the ${title}"
     }
     
-    static CommonUtils getInstance() {
-        return new CommonUtils()
-    }
-    
-    // Add more reusable methods as needed...
 }
+return new Fuji()
