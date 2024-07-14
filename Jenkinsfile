@@ -8,13 +8,11 @@ pipeline {
             steps {
                 script {
                     // Load and use CommonUtils
-                    load 'CommonUtils.groovy'
-                    
-                    // Instantiate CommonUtils class
-                    def commonUtils = new CommonUtils()
+                    def script = this
+                    def utils = load script: 'CommonUtils.groovy'
                     
                     // Use methods from CommonUtils inside script block
-                    commonUtils.notify('Pipeline executed successfully!')
+                    utils.notify('Pipeline executed successfully!')
                     echo 'Hello World'
                 }
             }
