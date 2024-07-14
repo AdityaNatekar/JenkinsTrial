@@ -12,9 +12,7 @@ pipeline {
                     // Instantiate Fuji and Kiku objects
      
                     
-                    // Store instances in environment for use in subsequent stages
-                    env.fujiInstance = Fuji
-                    env.kikuInstance = Kiku
+   
                 }
             }
         }
@@ -23,8 +21,8 @@ pipeline {
             steps {
                 script {
                     // Access methods from Fuji instance
-                    env.fujiInstance.say()
-                    env.fujiInstance.sing("Lemon")
+                   Fuji.say()
+                   Fuji.sing("Lemon")
                 }
             }
         }
@@ -33,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // Access methods from Kiku instance
-                    env.kikuInstance.say()
+                    Kiku.say()
                 }
             }
         }
