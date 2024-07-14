@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     // Load CommonUtils.groovy and get its class definition
-                    def utilsClass = load 'CommonUtils.groovy'
+                    def utilsClass = load 'commonUtils.groovy'
                     
                     // Use static methods from CommonUtils class
                     utilsClass.cloneRepository('https://github.com/example/repo.git')
