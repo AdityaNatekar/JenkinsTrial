@@ -2,21 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Initialize') {
+        stage('Example Stage') {
             steps {
                 script {
-                    // Load Groovy classes
-                    def Fuji = load "fuji.groovy"
-              
-                    
-                    // Instantiate objects
-                    def fujiInstance = new Fuji()
-                
-                    
-                    // Use methods from Fuji and Kiku instances
-                    fujiInstance.say()
-                    fujiInstance.sing("Lemon")
+                    // Load the CommonUtils class
+                    def CommonUtils = load "common.groovy"
 
+                    // Instantiate an object of CommonUtils
+                    def utils = new CommonUtils()
+
+                    // Call the method from CommonUtils
+                    utils.myCommonCode()
                 }
             }
         }
