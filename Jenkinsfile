@@ -8,9 +8,9 @@ pipeline {
             steps {
                 script {
                     // Load CommonUtils.groovy and invoke its static methods directly
-                    load 'commonUtils.groovy'
+                    fuji = load "${pwd()}/commonUtils.groovy"
                     
-                    CommonUtils.notify('Pipeline executed successfully!')
+                    fuji.notify('Pipeline executed successfully!')
                     
                     echo 'Hello World'
                 }
