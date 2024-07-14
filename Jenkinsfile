@@ -10,12 +10,11 @@ pipeline {
                     def Kiku = load "${pwd()}/kiku.groovy"
                     
                     // Instantiate Fuji and Kiku objects
-                    def fujiInstance = new Fuji()
-                    def kikuInstance = new Kiku()
+     
                     
                     // Store instances in environment for use in subsequent stages
-                    env.fujiInstance = fujiInstance
-                    env.kikuInstance = kikuInstance
+                    env.fujiInstance = Fuji
+                    env.kikuInstance = Kiku
                 }
             }
         }
