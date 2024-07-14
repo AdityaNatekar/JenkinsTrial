@@ -1,3 +1,5 @@
+// Jenkinsfile
+
 pipeline {
     agent any
     
@@ -5,7 +7,10 @@ pipeline {
         stage('Load and Use CommonUtils') {
             steps {
                 script {
-                    // Load CommonUtils class
+                    // Load and use CommonUtils
+                    load 'CommonUtils.groovy'
+                    
+                    // Instantiate CommonUtils class
                     def commonUtils = new CommonUtils()
                     
                     // Use methods from CommonUtils inside script block
