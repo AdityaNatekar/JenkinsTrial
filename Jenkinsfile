@@ -5,8 +5,8 @@ pipeline {
         stage('Load and Use CommonUtils') {
             steps {
                 script {
-                    // Load CommonUtils.groovy from workspace
-                    def commonUtils = load 'commonUtils.groovy'
+                    // Load CommonUtils class
+                    def commonUtils = new CommonUtils()
                     
                     // Use methods from CommonUtils inside script block
                     commonUtils.notify('Pipeline executed successfully!')
@@ -16,4 +16,3 @@ pipeline {
         }
     }
 }
-
