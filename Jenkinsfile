@@ -6,8 +6,8 @@ pipeline {
             steps {
                 script {
                     // Load Fuji and Kiku classes
-                    def Fuji = load "fuji.groovy"
-                    def Kiku = load "kiku.groovy"
+                    def Fuji = load "${pwd()}/fuji.groovy"
+                    def Kiku = load "${pwd()}/kiku.groovy"
                     
                     // Instantiate Fuji and Kiku objects
                     def fujiInstance = new Fuji()
