@@ -1,4 +1,4 @@
-class Fuji {
+
     void say() {
         println "I'm fuji aoi!"
     }
@@ -6,5 +6,4 @@ class Fuji {
     void sing(String title) {
         println "Sing the ${title}"
     }
-}
-return this 
+
