@@ -1,13 +1,19 @@
 pipeline {
     agent any
-
+    
     stages {
-        stage('Hello') {
+        stage('Load and Use CommonUtils') {
             steps {
-                def commonUtils = load 'CommonUtils.groovy'
-                commonUtils.notify('Pipeline executed successfully!')
-                echo 'Hello World'
+                script {
+                    // Load CommonUtils.groovy from workspace
+                    def commonUtils = load 'CommonUtils.groovy'
+                    
+                    // Use methods from CommonUtils inside script block
+                    commonUtils.notify('Pipeline executed successfully!')
+                    echo 'Hello World'
+                }
             }
         }
     }
 }
+
