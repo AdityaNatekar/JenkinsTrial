@@ -7,12 +7,16 @@ pipeline {
         stage('Load and Use CommonUtils') {
             steps {
                 script {
-                    // Load and use CommonUtils
-                    def script = this
-                    def utils = load script: 'CommonUtils.groovy'
+                    // Load CommonUtils.groovy and get its class definition
+                    def utilsClass = load 'CommonUtils.groovy'
                     
-                    // Use methods from CommonUtils inside script block
-                    utils.notify('Pipeline executed successfully!')
+                    // Use static methods from CommonUtils class
+                    utilsClass.cloneRepository('https://github.com/example/repo.git')
+                    utilsClass.buildProject('mvn')
+                    utilsClass.copyArtifacts('target/*.jar', '/tmp/artifacts/')
+                    utilsClass.deploy('echo "Deploying..."')
+                    utilsClass.notify('Pipeline executed successfully!')
+                    
                     echo 'Hello World'
                 }
             }
