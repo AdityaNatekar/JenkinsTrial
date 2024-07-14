@@ -7,3 +7,4 @@ class Fuji {
         println "Sing the ${title}"
     }
 }
+return this 
