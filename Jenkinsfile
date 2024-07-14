@@ -1,37 +1,40 @@
 pipeline {
     agent any
+
     stages {
         stage('Initialize') {
             steps {
                 script {
-                    // Load fuji.groovy and kiku.groovy from the specified paths
-                    def Fuji = load "${pwd()}/fuji.groovy"
-                    def Kiku = load "${pwd()}/kiku.groovy"
+                    // Load Fuji and Kiku classes
+                    def Fuji = load "Fuji.groovy"
+                    def Kiku = load "Kiku.groovy"
                     
-                    // Instantiate Fuji and Kiku classes
-                    // def fujiInstance = new Fuji()
-                    // def kikuInstance = new Kiku()
+                    // Instantiate Fuji and Kiku objects
+                    def fujiInstance = new Fuji()
+                    def kikuInstance = new Kiku()
                     
-                    // Assign instances to environment variables
-                    env.fuji = Fuji
-                    env.kiku = Kiku
+                    // Store instances in environment for use in subsequent stages
+                    env.fujiInstance = fujiInstance
+                    env.kikuInstance = kikuInstance
                 }
             }
         }
-        stage('exec fuji') {
+
+        stage('Execute Fuji') {
             steps {
                 script {
-                    // Call methods from Fuji instance
-                    env.fuji.say()
-                    env.fuji.sing("Lemon")
+                    // Access methods from Fuji instance
+                    env.fujiInstance.say()
+                    env.fujiInstance.sing("Lemon")
                 }
             }
         }
-        stage('exec kiku') {
+
+        stage('Execute Kiku') {
             steps {
                 script {
-                    // Call methods from Kiku instance
-                    env.kiku.say()
+                    // Access methods from Kiku instance
+                    env.kikuInstance.say()
                 }
             }
         }
