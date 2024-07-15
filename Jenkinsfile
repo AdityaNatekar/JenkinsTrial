@@ -10,7 +10,8 @@ pipeline {
             steps {
                 script {
                     // Load the helper script once
-                    def helperScript = load 'common.groovy'
+                    def currentdir = pwd().toString()
+                    def helperScript = load '${currentdir}/common.groovy'
                     // Define a function to create helper instances with steps context
                     getHelper = { stepsContext ->
                         new helperScript.Helper(stepsContext)
