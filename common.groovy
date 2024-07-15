@@ -1,16 +1,9 @@
-import groovy.transform.Field
+class MyClass {
 
-class Helper {
-    transient def steps // Marking as transient to avoid serialization
-
-    Helper(steps) {
-        this.steps = steps
+    @Override
+    public String toString() {
+        return "toto";
     }
 
-    def printShellExecution(String command) {
-        def result = steps.sh(script: command, returnStdout: true).trim()
-        steps.echo "Shell command executed: ${command}"
-        steps.echo "Result: ${result}"
-        return result
-    }
 }
+return MyClass();
