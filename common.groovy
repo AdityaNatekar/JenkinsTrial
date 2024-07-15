@@ -17,4 +17,4 @@ class Helper implements Serializable {
     }
 }
 
-return this;
+return this
