@@ -3,8 +3,8 @@ node(any) {
     def myClass = load 'common.groovy'
     
     // Instantiate MyClass
-    def instance = new MyClass()
+   
     
     // Call toString() method
-    echo instance.toString()
+    echo myClass.toString()
 }
