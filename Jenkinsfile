@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     // Load Helper class from Helper.groovy
-                    load 'Helper.groovy'
+                    load 'common.groovy'
                     
                     // Instantiate Helper class
                     helper = new Helper(steps)
