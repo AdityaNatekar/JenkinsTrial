@@ -9,7 +9,7 @@ class Helper implements Serializable {
         this.steps = steps
     }
 
-    public def printShellExecution(String command) {
+    static public def printShellExecution(String command) {
         def result = steps.sh(script: command, returnStdout: true).trim()
         steps.echo "Shell command executed: ${command}"
         steps.echo "Result: ${result}"
