@@ -2,17 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Example') {
+        stage('Initialize') {
             steps {
                 script {
-                    // Load Helper class from workspace
-                    def helperScript = load "${workspace}/common.groovy"
+    
+                }
+            }
+        }
 
-                    // Instantiate Helper class
-                    def helper = new helperScript.Helper(steps)
-
-                    // Use helper method
-                    helper.printShellExecution('echo "Hello, world!"')
+        stage('Build') {
+            steps {
+                script {
+                    def helperScript = load "${WORKSPACE}/common.groovy"
+                    def helper = new helperScript.Helper(this)
+                    helper.printShellExecution('echo Hello, World!')
                 }
             }
         }
