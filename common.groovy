@@ -1,9 +1,5 @@
-class MyClass {
-
-    @Override
-    public String toString() {
-        return "toto";
-    }
-
+class Thing {
+   def doStuff() { return "HI" }
 }
-return MyClass();
+
+return new Thing();
