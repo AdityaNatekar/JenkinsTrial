@@ -2,14 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Initialize') {
-            steps {
-                script {
-    
-                }
-            }
-        }
-
         stage('Build') {
             steps {
                 script {
