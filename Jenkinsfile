@@ -14,9 +14,9 @@ pipeline {
             steps {
                 script {
                     def helperScript = load "${WORKSPACE}/common.groovy"
-                    import Helper
-                    def helper = new helperScript.Helper(this)
-                    helper.printShellExecution('echo Hello, World!')
+                
+                    //def helper = new helperScript.Helper(this)
+                    helperScript.printShellExecution('echo Hello, World!')
                 }
             }
         }
