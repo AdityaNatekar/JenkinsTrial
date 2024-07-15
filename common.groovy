@@ -17,4 +17,3 @@ class Helper implements Serializable {
     }
 }
 
-return this
