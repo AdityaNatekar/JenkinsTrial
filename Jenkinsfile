@@ -9,9 +9,8 @@ pipeline {
         stage('Initialize') {
             steps {
                 script {
-                    // Load the helper script once
-                    def currentdir = pwd().toString()
-                    def helperScript = load "${currentdir}/common.groovy"
+                    // Load the helper script
+                    def helperScript = load "${WORKSPACE}/common.groovy"
                     
                     // Define a function to create helper instances with steps context
                     def getHelper = { stepsContext ->
@@ -23,14 +22,14 @@ pipeline {
                 }
             }
         }
-        stage('Clone Repository') {
-            steps {
-                script {
-                    // Use the stored helper instance for operations
-                    helperInstance.gitClone(env.GIT_REPO_URL, env.GIT_BRANCH, env.GIT_CREDENTIALS_ID)
-                }
-            }
-        }
+        // stage('Clone Repository') {
+        //     steps {
+        //         script {
+        //             // Use the stored helper instance for operations
+        //             helperInstance.gitClone(env.GIT_REPO_URL, env.GIT_BRANCH, env.GIT_CREDENTIALS_ID)
+        //         }
+        //     }
+        // }
         stage('Build') {
             steps {
                 script {
