@@ -1,5 +1,5 @@
-class Thing {
+class common {
    def doStuff() { return "HI" }
 }
 
-return new Thing();
+return new common();
