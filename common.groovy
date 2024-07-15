@@ -1,6 +1,9 @@
+// Helper.groovy
+import groovy.transform.Field
+
 class Helper implements Serializable {
-    private static final long serialVersionUID = 1L
-    private def steps
+    @Field private static final long serialVersionUID = 1L
+    @Field private def steps
 
     public Helper(steps) {
         this.steps = steps
@@ -11,11 +14,5 @@ class Helper implements Serializable {
         steps.echo "Shell command executed: ${command}"
         steps.echo "Result: ${result}"
         return result
-    }
-
-    public def gitClone(String repoUrl, String branch, String credentialsId) {
-        steps.sshagent(credentials: [credentialsId]) {
-            steps.sh "git clone -b ${branch} ${repoUrl}"
-        }
     }
 }
