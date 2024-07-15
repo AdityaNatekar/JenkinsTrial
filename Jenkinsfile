@@ -1,9 +1,20 @@
-def helper = new Helper(steps)
+def helper
 
 pipeline {
     agent any
     
     stages {
+        stage('Initialize') {
+            steps {
+                script {
+                    // Load Helper class from Helper.groovy
+                    load 'Helper.groovy'
+                    
+                    // Instantiate Helper class
+                    helper = new Helper(steps)
+                }
+            }
+        }
         stage('Example') {
             steps {
                 script {
@@ -12,25 +23,5 @@ pipeline {
                 }
             }
         }
-    }
-}
-
-
-import groovy.transform.Field
-
-class Helper implements Serializable {
-    private static final long serialVersionUID = 1L
-
-    transient def steps // Marking as transient to avoid serialization
-
-    Helper(steps) {
-        this.steps = steps
-    }
-
-    def printShellExecution(String command) {
-        def result = steps.sh(script: command, returnStdout: true).trim()
-        steps.echo "Shell command executed: ${command}"
-        steps.echo "Result: ${result}"
-        return result
     }
 }
