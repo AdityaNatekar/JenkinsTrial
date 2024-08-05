@@ -12,18 +12,18 @@ void main() {
         
         // Assume JSON strings are passed in as parameters
         String builtJsonString = params.BUILT_JSON
-        String jobsJsonString = params.JOBS_JSON
-        String variantsJsonString = params.VARIANTS_JSON
+      //   String jobsJsonString = params.JOBS_JSON
+      //   String variantsJsonString = params.VARIANTS_JSON
         
         // Load JSON data from strings
         Map built = loadJsonFromString(builtJsonString)
-        Map jobs = loadJsonFromString(jobsJsonString)
-        Map variants = loadJsonFromString(variantsJsonString)
+      //   Map jobs = loadJsonFromString(jobsJsonString)
+      //   Map variants = loadJsonFromString(variantsJsonString)
         
         // Print JSON data for verification
         println "Built JSON: ${built}"
-        println "Jobs JSON: ${jobs}"
-        println "Variants JSON: ${variants}"
+      //   println "Jobs JSON: ${jobs}"
+      //   println "Variants JSON: ${variants}"
     }
 }
 
