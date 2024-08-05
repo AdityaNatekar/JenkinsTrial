@@ -8,7 +8,7 @@ def loadJsonFromString(jsonString) {
 
 void main() {
     stage('init') {
-        step([$class: 'WsCleanup'])
+
         
         // Assume JSON strings are passed in as parameters
         String builtJsonString = params.BUILT_JSON
