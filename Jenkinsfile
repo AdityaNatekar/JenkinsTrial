@@ -23,13 +23,13 @@ checkout scm
         String builtJsonString = params.BUILT_JSON
         
         // Create an instance of BuildManager
-        buildManager.buildJudgement(true)
+        Map built = buildManager.buildJudgement(params.FORCEBUILD, builtJsonString)
 
         // Get processed JSON based on the build judgement
       //  Map built = buildManager.buildJudgement()
 
         // Print JSON data for verification
-       // println "Built JSON: ${built}"
+        println "Built JSON: ${built}"
     }
 }
 
