@@ -11,9 +11,11 @@ def loadJsonFromString(jsonString) {
 
 void main() {
 checkout scm
-    load "BuildManager.groovy"
+    
             
     stage('init') {
+        checkout scm
+        load 'BuildManager.groovy'
 //def buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
 
 
@@ -27,7 +29,7 @@ checkout scm
       //  Map built = buildManager.buildJudgement()
 
         // Print JSON data for verification
-        println "Built JSON: ${built}"
+       // println "Built JSON: ${built}"
     }
 }
 
