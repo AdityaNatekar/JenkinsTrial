@@ -15,7 +15,7 @@ checkout scm
             
     stage('init') {
         checkout scm
-        load 'BuildManager.groovy'
+       def buildManager = load 'BuildManager.groovy'
 //def buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
 
 
@@ -23,7 +23,7 @@ checkout scm
         String builtJsonString = params.BUILT_JSON
         
         // Create an instance of BuildManager
-       def buildManager = new BuildManager(true)
+        buildManager.BuildManager(true)
 
         // Get processed JSON based on the build judgement
       //  Map built = buildManager.buildJudgement()
