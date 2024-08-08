@@ -3,8 +3,6 @@ import groovy.json.JsonOutput
 
 //import groovy.json.JsonSlurper
 
-checkout scm
-load 'utility.Groovy'
 
 // Function to initialize BuildManager
 def initializeBuildManager() {
@@ -18,7 +16,8 @@ def loadJsonFromString(jsonString) {
 }
 
 void main() {
-
+checkout scm
+load 'utility.Groovy'
     
             
     stage('init') {
