@@ -10,8 +10,8 @@ def loadJsonFromString(jsonString) {
 }
 
 void main() {
-
-            load "BuildManager.groovy"
+checkout scm
+    load "BuildManager.groovy"
     stage('init') {
 
 
