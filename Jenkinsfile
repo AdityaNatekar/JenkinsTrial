@@ -2,6 +2,12 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
 //import groovy.json.JsonSlurper
+import utility.GroovyUtils
+
+// Function to initialize BuildManager
+def initializeBuildManager() {
+    return GroovyUtils.loadGroovyScript('BuildManager.groovy')
+}
 
 // Function to parse a JSON string
 def loadJsonFromString(jsonString) {
@@ -15,7 +21,7 @@ checkout scm
             
     stage('init') {
         checkout scm
-       def buildManager = load 'BuildManager.groovy'
+       def buildManager = initializeBuildManager()
 //def buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
 
 
