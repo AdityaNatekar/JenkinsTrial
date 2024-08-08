@@ -12,9 +12,9 @@ def loadJsonFromString(jsonString) {
 void main() {
 checkout scm
     load "BuildManager.groovy"
-            BuildManager buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
+            
     stage('init') {
-
+def buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
 
 
         // Assume JSON strings are passed in as parameters
