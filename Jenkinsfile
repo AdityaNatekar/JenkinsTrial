@@ -12,6 +12,7 @@ def loadJsonFromString(jsonString) {
 void main() {
 checkout scm
     load "BuildManager.groovy"
+            BuildManager buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
     stage('init') {
 
 
@@ -20,7 +21,7 @@ checkout scm
         String builtJsonString = params.BUILT_JSON
         
         // Create an instance of BuildManager
-        BuildManager buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
+       // BuildManager buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
 
         // Get processed JSON based on the build judgement
         Map built = buildManager.buildJudgement()
