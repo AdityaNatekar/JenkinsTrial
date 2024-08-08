@@ -5,7 +5,7 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 import groovy.util.DelegatingScript
 
-class GroovyUtils {
+class GroovyUtils implements Serializable {
     
     /**
      * Converts a JSON string to a Map.
