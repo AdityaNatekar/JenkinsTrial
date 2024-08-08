@@ -5,10 +5,10 @@ class BuildManager {
     boolean forceBuild
     Map builtJson
 
-    BuildManager(boolean forceBuild, String builtJsonString) {
-        this.forceBuild = forceBuild
-        this.builtJson = new JsonSlurper().parseText(builtJsonString)
-    }
+    // BuildManager(boolean forceBuild, String builtJsonString) {
+    //     this.forceBuild = forceBuild
+    //     this.builtJson = new JsonSlurper().parseText(builtJsonString)
+    // }
 
     // Function to remove '#number' suffix from all component values
     private Map removeNumberSuffixFromComponents(Map json) {
