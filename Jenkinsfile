@@ -17,7 +17,7 @@ def loadJsonFromString(jsonString) {
 
 void main() {
 checkout scm
-load 'utility.Groovy'
+load 'utility.groovy'
     
             
     stage('init') {
