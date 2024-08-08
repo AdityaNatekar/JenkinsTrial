@@ -36,5 +36,4 @@ class BuildManager {
         return false
     }
 }
-
-// return new BuildManager()
+ return new BuildManager()
