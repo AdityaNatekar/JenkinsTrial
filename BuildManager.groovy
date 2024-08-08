@@ -2,11 +2,11 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
 class BuildManager {
-    boolean forceBuild
 
 
-    BuildManager(boolean forceBuild) {
-        this.forceBuild = forceBuild
+
+    BuildManager() {
+    
 
     }
 
@@ -29,7 +29,7 @@ class BuildManager {
     // }
 
     // Function to decide whether to reuse all components based on the forceBuild flag
-    Map buildJudgement() {
+    boolean buildJudgement(boolean forcebuild) {
         if (forceBuild) {
             return true
         }
