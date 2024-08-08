@@ -36,3 +36,5 @@ class BuildManager {
         return builtJson
     }
 }
+
+return new BuildManager()
