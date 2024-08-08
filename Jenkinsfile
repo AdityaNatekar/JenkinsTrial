@@ -4,7 +4,7 @@ import groovy.json.JsonOutput
 //import groovy.json.JsonSlurper
 
 checkout scm
-import utility.GroovyUtils
+import utility.Groovy
 
 // Function to initialize BuildManager
 def initializeBuildManager() {
