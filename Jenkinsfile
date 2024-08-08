@@ -23,7 +23,7 @@ checkout scm
         String builtJsonString = params.BUILT_JSON
         
         // Create an instance of BuildManager
-        buildManager.BuildManager(true)
+        buildManager.buildJudgement(true)
 
         // Get processed JSON based on the build judgement
       //  Map built = buildManager.buildJudgement()
