@@ -18,11 +18,11 @@ def loadJsonFromString(jsonString) {
 }
 
 void main() {
-checkout scm
+
     
             
     stage('init') {
-        checkout scm
+
        def buildManager = initializeBuildManager()
 //def buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
 
