@@ -30,7 +30,7 @@ class BuildManager {
 
     // Function to decide whether to reuse all components based on the forceBuild flag
     boolean buildJudgement(boolean forcebuild) {
-        if (forceBuild) {
+        if (forcebuild) {
             return true
         }
         return false
