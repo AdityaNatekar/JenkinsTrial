@@ -1,43 +1,74 @@
-import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
-
-//import groovy.json.JsonSlurper
-
-
-// Function to initialize BuildManager
-def initializeBuildManager() {
-    return GroovyUtils.loadGroovyScript('BuildManager.groovy')
+@NonCPS
+def loadJson(String str) {
+    return parseObject(new groovy.json.JsonSlurper().parseText(str))
 }
 
-// Function to parse a JSON string
-def loadJsonFromString(jsonString) {
-    def jsonSlurper = new JsonSlurper()
-    return jsonSlurper.parseText(jsonString)
+def processComponentList(List componentList) {
+    println "componetlist: $componentList"
+    def ignoreKeys = ['linux@RELEASE']
+    return componentList.collect { component ->
+        if (component instanceof List && component.size() == 2) {
+            println "Inside Component $component"
+            def jobVariant = component[0]
+            def jobName = component[1]
+            
+            if (jobName instanceof String && jobName.contains('#') && !ignoreKeys.contains(jobVariant)) {
+                println "jobName: $jobName"
+                jobName = jobName.replaceAll(/#\d+$/, '')
+            }
+            [jobVariant, jobName]
+        } else {
+            println "Skipping component: $component"
+            component
+        }
+    }
+}
+
+def processEntry(Object entry) {
+    println "Processing map: $entry"
+    if (entry instanceof Map) {
+        println "Processing map: $entry"
+        return entry.collectEntries { k, v ->
+            println "Processing key-value pair: $k: $v"
+            if (k == 'component') {
+                [k, (v instanceof List) ? v.collect { processComponentList(it) } : processComponentList(v)]
+            } else {
+                [k, processEntry(v)]
+            }
+        }
+    } else if (entry instanceof List) {
+        println "Processing list: $entry"
+        return entry.collect { processEntry(it) }
+    } else {
+        return entry
+    }
+}
+
+def removeReuseSuffixFromComponents(Map json) {
+    return processEntry(json)
+}
+
+Map buildJudgement(boolean forceBuild, Map builtJson) {
+    if (forceBuild) {
+        // Only modify the JSON if forceBuild is true
+        return removeReuseSuffixFromComponents(builtJson)
+    }
+    // Return the original JSON if no modification is needed
+    return builtJson
 }
 
 void main() {
-checkout scm
-load 'utility.groovy'
-    
-            
-    stage('init') {
+    // def buildManager
+    // checkout scm
+    // def buildManagerScript = 'Fullbuild/BuildManager.groovy'
+    // try {
+    //     buildManager = load buildManagerScript
+    // } catch (Exception exception) {
+    //     error("Loading ${buildManagerScript} failed: ${exception}")
+    // }
 
-       def buildManager = initializeBuildManager()
-//def buildManager = new BuildManager(params.FORCEBUILD.toBoolean(), builtJsonString)
-
-
-        // Assume JSON strings are passed in as parameters
-        String builtJsonString = params.BUILT_JSON
-        
-        // Create an instance of BuildManager
-        Map built = buildManager.buildJudgement(params.FORCEBUILD, builtJsonString)
-
-        // Get processed JSON based on the build judgement
-      //  Map built = buildManager.buildJudgement()
-
-        // Print JSON data for verification
-        println "Built JSON: ${built}"
-    }
+    Map built = buildJudgement(params.FORCEBUILD,loadJson(params.BUILT_JSON))
+    print("built:$built")
 }
 
 node(params.EXECUTE_NODE) {
